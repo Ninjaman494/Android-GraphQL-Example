@@ -4,6 +4,7 @@ import com.apollographql.apollo.ApolloClient;
 import com.apollographql.apollo.ApolloQueryCall;
 import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.rx3.Rx3Apollo;
+import com.n494.RocketQuery;
 import com.n494.RocketsQuery;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -17,6 +18,16 @@ class Server {
     public static Observable<Response<RocketsQuery.Data>> fetchRockets() {
         ApolloQueryCall<RocketsQuery.Data> call = getApolloClient()
                 .query(new RocketsQuery());
+
+        return Rx3Apollo.from(call)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter((dataResponse -> dataResponse.getData() != null));
+    }
+
+    public static Observable<Response<RocketQuery.Data>> fetchRocket(String id) {
+        ApolloQueryCall<RocketQuery.Data> call = getApolloClient()
+                .query(new RocketQuery(id));
 
         return Rx3Apollo.from(call)
                 .subscribeOn(Schedulers.io())

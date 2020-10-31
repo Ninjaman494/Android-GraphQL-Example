@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNext(@NonNull Response<RocketsQuery.Data> dataResponse) {
                 if (dataResponse.getData() != null) {
-                    RocketsAdapter adapter = new RocketsAdapter(dataResponse.getData().rockets());
+                    RocketsAdapter adapter = new RocketsAdapter(dataResponse.getData().rockets(),MainActivity.this);
                     recyclerView.setAdapter(adapter);
                 }
             }

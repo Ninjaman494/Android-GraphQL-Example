@@ -1,5 +1,7 @@
 package com.n494.spacex;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,12 @@ import java.util.List;
 
 class RocketsAdapter extends RecyclerView.Adapter<RocketsAdapter.RocketHolder> {
 
+    private Context context;
     private List<RocketsQuery.Rocket> rockets;
 
-    public RocketsAdapter(List<RocketsQuery.Rocket> rockets) {
+    public RocketsAdapter(List<RocketsQuery.Rocket> rockets, Context context) {
         this.rockets = rockets;
+        this.context = context;
     }
 
     @NonNull
@@ -35,6 +39,12 @@ class RocketsAdapter extends RecyclerView.Adapter<RocketsAdapter.RocketHolder> {
 
         holder.rocketName.setText(rocket.name());
         holder.rocketDesc.setText(rocket.description());
+
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, RocketDetailsActivity.class);
+            intent.putExtra(RocketDetailsActivity.EXTRA_ID, rocket.id());
+            context.startActivity(intent);
+        });
     }
 
     @Override
