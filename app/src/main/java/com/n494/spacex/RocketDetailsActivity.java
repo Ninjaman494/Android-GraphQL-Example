@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.apollographql.apollo.api.Response;
@@ -39,6 +41,10 @@ public class RocketDetailsActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.rocketDetails_launchList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // Show loading
+        ProgressBar progressBar = findViewById(R.id.rocketDetails_progressBar);
+        progressBar.setVisibility(View.VISIBLE);
 
         // Fetch Rockets
         ObservableSource<Response<RocketQuery.Data>> observable = Server.fetchRocket(id);
@@ -86,7 +92,8 @@ public class RocketDetailsActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
-
+                        // Both requests have finished, so hide loading bar
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
     }
