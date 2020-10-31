@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp">
+
+        <TextView
+            android:id="@+id/rocket_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:text="Falcon 1" />
+
+        <TextView
+            android:id="@+id/rocket_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rocket_name"
+            android:textSize="18sp"
+            tools:text="The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth." />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
