@@ -41,4 +41,21 @@
         android:textSize="18sp"
         tools:text="The Falcon 1 was an expendable launch system privately developed and manufactured by SpaceX during 2006-2009. On 28 September 2008, Falcon 1 became the first privately-developed liquid-fuel launch vehicle to go into orbit around the Earth."/>
 
+    <TextView
+        android:id="@+id/rocketDetails_launchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rocketDetails_desc"
+        android:layout_marginTop="32dp"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:text="Launchpads"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rocketDetails_launchList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rocketDetails_launchTitle"
+        tools:listitem="@layout/item_launchpad"/>
+
 </RelativeLayout>
